@@ -28,6 +28,7 @@ public class HomeworkArrayListClass<T extends Comparable<T>> implements Homework
     public T get(int index) throws IndexOutOfBoundsException
     {
         checkRange(index);
+
         return (T) mainArray[index];
     }
 
