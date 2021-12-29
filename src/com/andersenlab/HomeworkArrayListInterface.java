@@ -1,7 +1,7 @@
 package com.andersenlab;
 
 /**
- * Интерфейс для для реализации динамического массива.
+ * Interface for implementing a dynamic array.
  */
 public interface HomeworkArrayListInterface<T>
 {

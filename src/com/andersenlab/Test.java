@@ -1,54 +1,91 @@
 package com.andersenlab;
 
-import java.util.Objects;
-
-class User implements Comparable<User>
-{
-    private Integer id;
-    private String name;
-    User(int id, String name)
-    {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
-
-    @Override
-    public int compareTo(User object) {
-
-        return this.id.compareTo(object.id);
-    }
-}
-
 public class Test {
+    public static void main(String[] args)
+    {
+        System.out.println("Custom Class:\n-----------------------------------------");
+        {
+            HomeworkArrayListClass<UserClass> users = new HomeworkArrayListClass<>();
+            //Adding new users
+            users.add(new UserClass(1,"Alex"));
+            users.add(new UserClass(4,"Jack"));
+            users.add(new UserClass(3,"Charley"));
+            users.add(new UserClass(5,"Oleg"));
+            users.add(new UserClass(2,"Thomas"));
+            users.add(new UserClass(98,"Albert"));
+
+            //Updating the user
+            users.set(0,new UserClass(11,"Harry"));
+
+            //Deleting user by id
+            users.remove(2);
+            //Deleting user by object
+            users.remove(new UserClass(98,"Albert"));
+
+            printData(users);
+
+            System.out.println("Sorting");
+            users.sort(0);
+
+            printData(users);
+        }
+        System.out.println("-----------------------------------------");
+
+        System.out.println("Integer:\n-----------------------------------------");
+        {
+            HomeworkArrayListClass<Integer> integers = new HomeworkArrayListClass<>();
+
+            integers.add(1);
+            integers.add(14);
+            integers.add(45);
+            integers.add(2);
+            integers.add(9);
+            integers.add(5);
+
+            integers.set(1,222);
+
+            integers.remove(5);
+            integers.remove(Integer.valueOf(222));
+
+            printData(integers);
+
+            System.out.println("Sorting");
+            integers.sort(1);
+
+            printData(integers);
+        }
+        System.out.println("-----------------------------------------");
+
+        System.out.println("String:\n-----------------------------------------");
+        {
+            HomeworkArrayListClass<String> strings = new HomeworkArrayListClass<>();
+
+            strings.add("yesterday");
+            strings.add("seemed");
+            strings.add("troubles");
+            strings.add("though");
+            strings.add("here");
+            strings.add("stay");
+
+            strings.set(5,"end");
+
+            strings.remove(4);
+            strings.remove("yesterday");
+
+            printData(strings);
+
+            System.out.println("Sorting");
+            strings.sort(0);
+
+            printData(strings);
+        }
+        System.out.println("-----------------------------------------");
+    }
+
+    /**
+     * Prints list items.
+     * @param collection - input instance of HomeworkArrayListClass.
+     */
     static void printData(HomeworkArrayListClass<?> collection)
     {
         System.out.println("------------------");
@@ -57,61 +94,5 @@ public class Test {
             System.out.println(collection.get(i));
         }
         System.out.println("------------------");
-    }
-    public static void main(String[] args) {
-        HomeworkArrayListClass<User> users = new HomeworkArrayListClass<>();
-        //Добавление пользователей
-        users.add(new User(1,"Alex"));
-        users.add(new User(4,"Jack"));
-        users.add(new User(3,"Charley"));
-        users.add(new User(5,"Oleg"));
-        users.add(new User(2,"Thomas"));
-        users.add(new User(98,"Albert"));
-
-        //Изменение пользователя
-        users.set(0,new User(11,"Harry"));
-
-        //удаление пользователя
-
-        //Вывод списка
-        printData(users);
-
-        System.out.println("Сортировка");
-        users.sort(0);
-
-        //Вывод списка
-        printData(users);
-        /*
-        HomeworkArrayListClass<String> test = new HomeworkArrayListClass<>();
-        String newItem = "Какая замена";
-
-        for (int i = 0; i < 5; ++i) {
-            test.add("Hello" + i);
-        }
-
-        test.set(2, newItem);
-
-
-        System.out.println("------------------");
-        System.out.println("Список элементов по индексу:");
-        for (int i = 0; i < test.size(); ++i)
-        {
-            System.out.println(test.get(i));
-        }
-        System.out.println("------------------");
-        System.out.println("Вывод индекса по значению:");
-        System.out.println(test.get("Hello3"));
-        System.out.println("------------------");
-        System.out.println("Количество элементов: " + test.size());
-        System.out.println("------------------");
-        System.out.println("Удаление элемента по индексу:");
-        test.remove(0);
-        for (int i = 0; i < test.size(); ++i)
-        {
-            System.out.println(test.get(i));
-        }
-        System.out.println("------------------");
-        */
-
     }
 }
