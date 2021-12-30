@@ -6,6 +6,7 @@ package com.andersenlab;
 public interface HomeworkArrayListInterface<T>
 {
     void add (T t);
+    void add (int index, T t);
     T get(int index);
     void set(int index, T t);
     void remove(int index);

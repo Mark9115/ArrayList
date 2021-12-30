@@ -24,6 +24,28 @@ public class HomeworkArrayListClass<T extends Comparable<T>> implements Homework
     }
 
     /**
+     * Adding item of T object in certain index to static array.
+     * Will increase two times array, if it is less than initial.
+     * @param object - input T.
+     * @param index - input int.
+     */
+    @Override
+    public void add(int index, T object) throws IndexOutOfBoundsException
+    {
+        checkRange(index);
+        if(pointer == mainArray.length - 1)
+            resize(mainArray.length * 2);
+
+        Object[] tempArray = Arrays.copyOf(mainArray, pointer);
+        // Shifts the mainArray to the right by 1
+        for (int i = index; i < pointer; i++) {
+            mainArray[i + 1] = tempArray[i];
+        }
+        pointer++;
+        mainArray[index] = object;
+    }
+
+    /**
      * Update item of T object.
      * Will update item by index.
      * @param index - input int.

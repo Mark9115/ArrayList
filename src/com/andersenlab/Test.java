@@ -13,7 +13,9 @@ public class Test {
             users.add(new UserClass(5,"Oleg"));
             users.add(new UserClass(2,"Thomas"));
             users.add(new UserClass(98,"Albert"));
-
+            //Inserting users
+            users.add(3,new UserClass(33,"Leo"));
+            users.add(5,new UserClass(55,"Steeve"));
             //Updating the user
             users.set(0,new UserClass(11,"Harry"));
 
@@ -42,6 +44,8 @@ public class Test {
             integers.add(9);
             integers.add(5);
 
+            integers.add(1,15);
+
             integers.set(1,222);
 
             integers.remove(5);
@@ -66,6 +70,8 @@ public class Test {
             strings.add("though");
             strings.add("here");
             strings.add("stay");
+
+            strings.add(0,"now");
 
             strings.set(5,"end");
 
